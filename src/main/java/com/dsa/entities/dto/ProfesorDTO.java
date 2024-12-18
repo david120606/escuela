@@ -1,12 +1,6 @@
-package com.dsa.entities;
+package com.dsa.entities.dto;
 
-import javax.persistence.*;
-
-@Entity
-@DiscriminatorValue("PROFESOR")
-public class Profesor extends Persona {
-
-    @Column(name = "asignatura")
+public class ProfesorDTO extends PersonaDTO {
     private String asignatura;
 
     public String getAsignatura() { return asignatura; }

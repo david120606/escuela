@@ -1,23 +1,10 @@
-package com.dsa.entities;
+package com.dsa.entities.dto;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.dsa.entities.Persona;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "telefono")
-public class Telefono {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class TelefonoDTO {
     private Long id;
-
-    @Column(name = "numero")
     private String numero;
-
-    @ManyToOne
-    @JoinColumn(name = "persona_id")
-    @JsonBackReference
     private Persona persona;
 
     public Long getId() { return id; }
@@ -28,4 +15,5 @@ public class Telefono {
 
     public Persona getPersona() { return persona; }
     public void setPersona(Persona persona) { this.persona = persona; }
+
 }

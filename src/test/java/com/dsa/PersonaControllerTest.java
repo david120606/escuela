@@ -37,7 +37,6 @@ class PersonaControllerTest {
     private ObjectMapper objectMapper;
 
     private Estudiante estudiante;
-    private Telefono telefono;
 
     @BeforeEach
     void setUp() {

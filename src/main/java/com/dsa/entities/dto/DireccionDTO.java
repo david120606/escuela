@@ -1,20 +1,12 @@
-package com.dsa.entities;
+package com.dsa.entities.dto;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "direccion")
-public class Direccion {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class DireccionDTO {
     private Long id;
 
-    @Column(name = "calle")
     private String calle;
 
-    @Column(name = "ciudad")
     private String ciudad;
+
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }

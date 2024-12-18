@@ -2,9 +2,6 @@ package com.dsa.entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,23 +10,18 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
 public abstract class Persona {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull(message = "El nombre no puede ser nulo")
-    @Size(min = 3, max = 50, message = "El nombre debe tener entre 3 y 50 caracteres")
+
     private String nombre;
 
-    @NotNull(message = "La dirección no puede ser nulo")
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "direccion_id")
     private Direccion direccion;
 
     @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    @NotEmpty(message = "Debe tener al menos un teléfono")
-    @Size(min = 1, message = "Debe tener al menos un teléfono")
     private List<Telefono> telefonos;
 
 
@@ -49,10 +41,5 @@ public abstract class Persona {
     public void addTelefono(Telefono telefono) {
         telefonos.add(telefono);
         telefono.setPersona(this);
-    }
-
-    public void removeTelefono(Telefono telefono) {
-        telefonos.remove(telefono);
-        telefono.setPersona(null);
     }
 }
